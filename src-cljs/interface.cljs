@@ -1,4 +1,4 @@
-(ns composed.interface
+(ns dojo.interface
   (:require [multiplication-game :as multiplication-game]
             [clojure.browser.repl :as repl]
             [jayq.core :refer [$] :as jq]))

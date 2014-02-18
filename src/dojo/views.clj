@@ -1,4 +1,4 @@
-(ns composed.views
+(ns dojo.views
   (:use [hiccup core page]
         [garden core])
   (:require [hiccup.bootstrap.page :as bootstrap]))

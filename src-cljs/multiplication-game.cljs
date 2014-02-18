@@ -95,8 +95,7 @@
 
 (defn game [problem-set]
   (let [answer-click  (click-chan :#enter "enter")
-        answer-enter  (keypress-chan :#answer "enter")
-        result-chan (chan)]
+        answer-enter  (keypress-chan :#answer "enter")]
     (go (loop [current-problem (first problem-set)
                coming-problems (rest problem-set)
                answers ()
@@ -108,15 +107,15 @@
             (recur
              (first coming-problems)
              (rest coming-problems)
-             (concat answers [(log-answer current-problem (elapsed-seconds start-time))])
+             (concat answers [(log-answer current-problem (elapsed-interval start-time))])
              (new js/Date)))
-          (>! result-chan (concat answers [(log-answer current-problem (elapsed-seconds start-time))]))))
-    result-chan))
+          (concat answers [(log-answer current-problem (elapsed-interval start-time))])))))
 
 (defn play []
    (repl/connect "http://localhost:9000/repl")
      (.slideDown ($ :#multiplication-game))
      (.slideUp ($ :#multiplication))
-     (let [result-chan (game (problem-set (get-int-value :#digits)
-                        (get-int-value :#rounds)))]
-     (go (.log js/console (pr-str (POST "/save" {:params (<! result-chan)}))))))
+     (take!
+      (game (problem-set (get-int-value :#digits)
+                         (get-int-value :#rounds)))
+      (fn [result-set] (POST "/save" {:params {:result-set result-set}}))))
