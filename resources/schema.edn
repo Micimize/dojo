@@ -1,0 +1,41 @@
+[#_{:db/doc "set of questions in a round"
+  :db/id #db/id[:db.part/db]
+  :db/ident :round/question
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/many
+  :db.install/_attribute :db.part/db}
+
+ {:db/doc "multiplicand, \"a\" of a * b = c"
+  :db/id #db/id[:db.part/db]
+  :db/ident :question/multiplicand
+  :db/valueType :db.type/bigint
+  :db/cardinality :db.cardinality/one
+  :db.install/_attribute :db.part/db}
+
+ {:db/doc "multiplier, \"b\" of a * b = c"
+  :db/id #db/id[:db.part/db]
+  :db/ident :question/multiplier
+  :db/valueType :db.type/bigint
+  :db/cardinality :db.cardinality/one
+  :db.install/_attribute :db.part/db}
+
+ {:db/doc "user's guess"
+  :db/id #db/id[:db.part/db]
+  :db/ident :question/guess
+  :db/valueType :db.type/bigint
+  :db/cardinality :db.cardinality/one
+  :db.install/_attribute :db.part/db}
+
+ {:db/doc "time a question was posed"
+  :db/id #db/id[:db.part/db]
+  :db/ident :question/start
+  :db/valueType :db.type/instant
+  :db/cardinality :db.cardinality/one
+  :db.install/_attribute :db.part/db}
+
+ {:db/doc "time a question was answered"
+  :db/id #db/id[:db.part/db]
+  :db/ident :question/end
+  :db/valueType :db.type/instant
+  :db/cardinality :db.cardinality/one
+  :db.install/_attribute :db.part/db}]
