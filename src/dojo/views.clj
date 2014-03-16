@@ -4,7 +4,8 @@
   (:require [hiccup.bootstrap.page :as bootstrap]))
 
 (def style [[:.container.well {:text-align "center"
-                               :margin "5%"}
+                               :margin "5% auto"
+                               :max-width "275px"}
              [:div.lead {:line-height "333%"}
               [:input {:text-align "center"
                        :width "60%"
@@ -22,17 +23,17 @@
                                  :border-top-left-radius "0" }]]]]]])
 
 
-(defn input-field [id placeholder]
-  [:input {:type "number" :id id
-           :placeholder placeholder} ])
+(defn input-field [field-type id]
+  [:input {:type field-type :id id
+           :placeholder id}])
 
 (defn multiplication-game []
   [:div {:id "multiplication-game" :class "table-responsive"}
    [:table {:class "lead table table-hover table-bordered" :id "answertable"}
     [:tr {:class "info" :id "current-problem"}
-     [:th {:id "multiplicand"} 123]
-     [:th {:id "multiplier"} 12]
-     [:th {:class "fill-cell"} (input-field "answer" "answer")]
+     [:th {:id "multiplicand"}]
+     [:th {:id "multiplier"}]
+     [:th {:class "fill-cell"} (input-field "number" "answer")]
      [:th {:class "fill-cell"}
       [:button {:id "enter"
                 :class "btn btn-primary"
@@ -50,8 +51,9 @@
    [:body [:div {:class "container well"}
      [:div {:id "multiplication" :class "lead"}
       "Multiplication"
-      (input-field "digits" "digits")
-      (input-field "rounds" "rounds")
+      (input-field "text" "username")
+      (input-field "number" "digits")
+      (input-field "number" "rounds")
       [:button {:id "play" :class "lead btn btn-primary btn-lg btn-block"} "GO"]]
      (multiplication-game)]]))
 

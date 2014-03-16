@@ -18,8 +18,9 @@
                  [jayq "2.5.0"]
                  [cljs-ajax "0.2.3"]
                  [com.andrewmcveigh/cljs-time "0.1.1"]]
-  :plugins [[lein-ring "0.8.5"]
-            [lein-cljsbuild "1.0.2"]]
+  :plugins [[lein-ring "0.8.10"]
+            [lein-cljsbuild "1.0.2"]
+            [lein-expectations "0.0.7"]]
   :cljsbuild {:repl-listen-port 9000
               :builds [{:source-paths ["src-cljs"]
                         :compiler {:output-to "resources/public/js/main.js"
@@ -27,4 +28,6 @@
                                    :pretty-print true}}]}
   :ring {:handler dojo.handler/app}
   :profiles
-  {:dev {:dependencies [[ring-mock "0.1.5"]]}})
+  {:dev {:dependencies [[ring-server "0.3.1"]
+                        [ring-mock "0.1.5"]
+                        [expectations "2.0.6"]]}})

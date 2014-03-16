@@ -13,3 +13,4 @@ pom.xml
 .*.swp
 .repl*err
 .repl*out
+.nrepl-port
