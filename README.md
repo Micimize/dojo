@@ -1,2 +1,2 @@
 # dojo
-not even close to ready for you to be looking at this
+Will eventually be a speed math practice app using nothing but clojure, clojurescript, and datomic
